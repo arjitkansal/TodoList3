@@ -20,8 +20,16 @@ class TodoTable extends React.Component {
   handleDelete = (todoItem) => {
     this.props.store.deleteTodo(todoItem);
   }
+  printTodo = (list) => {
+    if (list.length === 0)
+      return (<li>No todo at the moment... Yay!!!</li>);
+    else
+      return list.map((value,index) => {
+        return <li key={index} onClick={()=>{this.handleDelete(value)}}>{value}</li>
+      });
+  }
   render() {
-    this.handleDelete = this.handleDelete.bind(this);
+    //this.handleDelete = this.handleDelete.bind(this);
     //console.log(this);
     let list = this.props.store.state;
     return (
@@ -30,13 +38,7 @@ class TodoTable extends React.Component {
           <input type="text" name="newtodo" placeholder="Add new item..." onChange={this.handleChange} required />
           <button type="submit">Add Item</button>
         </form>
-        <ul>
-        {
-          list.map((value,index) => {
-            return <li key={index} onClick={()=>{this.handleDelete(value)}}>{value}</li>
-          })
-        }
-        </ul>
+        <ul>{ this.printTodo(list) }</ul>
       </div>
     );
   }
