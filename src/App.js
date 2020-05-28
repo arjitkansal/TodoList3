@@ -1,20 +1,24 @@
 import React from 'react';
 import logo from './logoInshorts.png';
-import TodoTable from './todo-table.js'
+import TodoTable from './todo-table.js';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" width="180" height="250" />
-          <h1>My Todo List</h1>
-          <TodoTable store={this.props.store}/>
+          <br/><br/><h1>My Todo List</h1><br/><br/>
+          <TodoTable store={this.props.state}/>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+let mapStateToProps = (state) => {
+  return { state };
+}
+
+export default connect(mapStateToProps)(App);
