@@ -1,7 +1,7 @@
 {
   "name": "modulartodolist",
   "version": "0.1.0",
-  "homepage": "https://arjitkansal/github.io/TodoList3",
+  "homepage": "https://arjitkansal.github.io/TodoList3",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
