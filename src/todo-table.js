@@ -11,6 +11,7 @@ class TodoTable extends React.Component {
     });
   }
   handleSubmit = (e) => {
+    //console.log(e);
     this.props.store.addTodo(this.state.tempTodo);
     this.setState({
       tempTodo: ''
@@ -20,9 +21,9 @@ class TodoTable extends React.Component {
   handleDelete = (todoItem) => {
     this.props.store.deleteTodo(todoItem);
   }
-  printTodo = (list) => {
+  printTodoList = (list) => {
     if (list.length === 0)
-      return (<li>No todo at the moment... Yay!!!</li>);
+      return (<h3>No todo at the moment... Yay!!!</h3>);
     else
       return list.map((value,index) => {
         return <li key={index} onClick={()=>{this.handleDelete(value)}}>{value}</li>
@@ -31,14 +32,14 @@ class TodoTable extends React.Component {
   render() {
     //this.handleDelete = this.handleDelete.bind(this);
     //console.log(this);
-    let list = this.props.store.state;
+    //let list = this.props.store.state;
     return (
       <div id = "todo-table" className = "ListofItems">
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="newtodo" placeholder="Add new item..." onChange={this.handleChange} required />
+          <input type="text" name="newtodo" value={this.state.tempTodo} placeholder="Add new item..." onChange={this.handleChange} required />
           <button type="submit">Add Item</button>
         </form>
-        <ul>{ this.printTodo(list) }</ul>
+        <ul>{ this.printTodoList(this.props.store.state) }</ul>
       </div>
     );
   }

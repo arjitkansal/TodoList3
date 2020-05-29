@@ -9,6 +9,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+          <br/><br/>
           <img src={logo} className="App-logo" alt="logo" width="180" height="250" />
           <br/><br/><h1>My Todo List</h1><br/><br/>
           <TodoTable store={this.props}/>

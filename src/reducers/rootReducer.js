@@ -10,6 +10,12 @@ const initState = [];
 
 const rootReducer = (state = initState, action) => {
   if(action.type === 'ADD_TODO') {
+    //console.log('state', state);
+    //console.log('find', typeof state.find((todo) => (action.todo===todo)) !== 'undefined');
+    if(typeof state.find((todo) => (action.todo===todo)) !== 'undefined') {
+      alert('element already present');
+      return state;
+    }
     return [...state, action.todo];
   }
   else if(action.type === 'DELETE_TODO') {
